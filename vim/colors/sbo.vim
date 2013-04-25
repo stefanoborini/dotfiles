@@ -20,14 +20,6 @@
 " the effort.  Maybe someone seeing this may decide otherwise...
 
 set background=dark
-if version > 580
-    " no guarantees for version 5.8 and below, but this makes it stop
-    " complaining
-    hi clear
-    if exists("syntax_on")
-        syntax reset
-    endif
-endif
 let g:colors_name="sbo"
 
 let g:colors = {}
@@ -838,7 +830,6 @@ let g:colors["termpurple"]="ad7fa8"
 let g:colors["termcyan"]="34e2e2"
 
 if has("gui_running") || &t_Co == 88 || &t_Co == 256
-    " functions {{{
     " returns an approximate grey index for the given grey level
     fun <SID>grey_number(x)
         if &t_Co == 88
@@ -1052,20 +1043,15 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
             exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
         endif
     endfun
-    " }}}
 
     call <SID>setColor("Normal", "white", "black", "")
-
-    " highlight groups
     call <SID>setColor("Cursor", "708090", "khaki", "")
-    "CursorIM
-    "Directory
-    "ErrorMsg
     call <SID>setColor("VertSplit", "c2bfa5", "7f7f7f", "reverse")
     call <SID>setColor("Folded", "cyan", "black", "")
-    call <SID>setColor("FoldColumn", "d2b48c", "4d4d4d", "")
+    call <SID>setColor("FoldColumn", "cyan", "black", "")
     call <SID>setColor("IncSearch", "708090", "khaki", "")
-    "LineNr
+    call <SID>setColor("Pmenu", "darkblue", "darkcyan", "reverse")
+    call <SID>setColor("PmenuSel", "blue", "yellow", "reverse")
     call <SID>setColor("ModeMsg", "daa520", "", "")
     call <SID>setColor("MoreMsg", "2e8b57", "", "")
     call <SID>setColor("NonText", "addbe7", "000000", "bold")
@@ -1077,13 +1063,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("StatusLineNC", "darkblue", "darkcyan", "")
     call <SID>setColor("Title", "yellow", "blue", "")
     call <SID>setColor("Visual", "yellow", "steelblue", "")
-    "VisualNOS
     call <SID>setColor("WarningMsg", "fa8072", "", "")
-    "WildMenu
-    "Menu
-    "Tooltip
-
-    " syntax highlighting groups
     call <SID>setColor("Comment", "grey60", "", "")
     call <SID>setColor("Constant", "termred", "", "")
     call <SID>setColor("Identifier", "termgreen", "", "none")
@@ -1094,16 +1074,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("Statement", "termyellow", "", "bold")
     call <SID>setColor("PreProc", "termpurple", "", "")
     call <SID>setColor("Special", "ffdead", "", "")
-    "Underlined
     call <SID>setColor("Ignore", "666666", "", "")
-    "Error
     call <SID>setColor("Todo", "ff4500", "eeee00", "")
-
-    hi def link cCustomFunc Function
-    hi def link cCustomMethodCall Function
-    hi def link cCustomClass Statement
-    hi def link cCustomTClass Statement
-    hi def link qwType Type
+    call <SID>setColor("MatchParen", "red", "", "")
     call <SID>setColor("cCustomTemplate", "orange", "", "")
     call <SID>setColor("cppVirtualMethod", "red", "", "")
     call <SID>setColor("cppTemplate", "orange", "", "")
@@ -1111,6 +1084,12 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("DiffDelete", "5f0000", "5f0000", "")
     call <SID>setColor("DiffChange", "", "00005f", "")
     call <SID>setColor("DiffText", "", "5f5f00", "")
+
+    hi def link cCustomFunc Function
+    hi def link cCustomMethodCall Function
+    hi def link cCustomClass Statement
+    hi def link cCustomTClass Statement
+    hi def link qwType Type
 else
     " color terminal definitions
     hi SpecialKey    ctermfg=darkgreen
@@ -1149,11 +1128,3 @@ else
     hi Error         cterm=bold ctermfg=7 ctermbg=1
 endif
 
-" vim: set fdl=0 fdm=marker:
-"#hi StatusLine cterm=NONE ctermfg=lightyellow ctermbg=darkblue
-"hi StatusLineNC cterm=NONE ctermfg=darkcyan ctermbg=darkblue
-"hi Folded ctermfg=lightcyan ctermbg=NONE
-"hi FoldColumn ctermfg=lightcyan ctermbg=NONE
-"hi Pmenu ctermbg=darkblue ctermfg=darkcyan
-"hi PmenuSel ctermbg=lightblue ctermfg=yellow
-"""hi MatchParen ctermfg=red ctermbg=NONE
