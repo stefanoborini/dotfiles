@@ -1056,8 +1056,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("MoreMsg", "2e8b57", "", "")
     call <SID>setColor("NonText", "addbe7", "000000", "bold")
     call <SID>setColor("Question", "00ff7f", "", "")
-    call <SID>setColor("Search", "black", "yellow", "")
-    call <SID>setColor("IncSearch", "black", "yellow", "")
+    call <SID>setColor("Search", "red", "yellow", "reverse,bold")
+    call <SID>setColor("IncSearch", "red", "yellow", "bold")
     call <SID>setColor("SpecialKey", "9acd32", "", "")
     call <SID>setColor("StatusLine", "blue", "yellow", "")
     call <SID>setColor("StatusLineNC", "darkblue", "darkcyan", "")
@@ -1084,6 +1084,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("DiffDelete", "5f0000", "5f0000", "")
     call <SID>setColor("DiffChange", "", "00005f", "")
     call <SID>setColor("DiffText", "", "5f5f00", "")
+    call <SID>setColor("ColorColumn", "", "00005f", "")
 
     hi def link cCustomFunc Function
     hi def link cCustomMethodCall Function

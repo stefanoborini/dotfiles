@@ -17,6 +17,7 @@ function FT_c()
 	map <S-F4> :s/^\/\/QQQSBO //<CR>:let @/ = ""<CR><CR>
     iabbr sep // -------------------------------------------------------------------------- //
     iabbr complex std::complex< double >
+    set colorcolumn=100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150
 endfunction
 
 function FT_fortran()
@@ -43,10 +44,13 @@ function FT_python()
 	set autoindent
     iabbr sep # --------------------------------------------------------------------------
     augroup vimrc_autocmds
-    autocmd BufEnter * highlight OverLength cterm=reverse
-    autocmd BufEnter * match OverLength /\%100v.*/
-	map <F3> :s/^#//<CR>:let @/ = ""<CR><CR>
-	map <F4> :s/^/#/<CR>:let @/ = ""<CR><CR>
+    set colorcolumn=100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150
+	map <F3> :s/^/# /<CR>:let @/ = ""<CR><CR>
+	map <S-F3> :s/^# //<CR>:let @/ = ""<CR><CR>
+	map <F4> :s/^/#QQQSBO /<CR>:let @/ = ""<CR><CR>
+	map <S-F4> :s/^#QQQSBO //<CR>:let @/ = ""<CR><CR>
+    iabbr false False
+    iabbr true True
     augroup END
 endfunction
 
@@ -135,11 +139,11 @@ function Main()
     colorscheme sbo
 
     " Recognize different extensions
-    au! BufRead,BufNewFile *.F90 setfiletype fortran
-    au! BufRead,BufNewFile *.tex setfiletype tex
-    au! BufRead,BufNewFile *.r,*.R setfiletype r
-    au! BufRead,BufNewFile *.i setfiletype swig
-    au! BufRead,BufNewFile *.swg setfiletype swig
+    au! BufRead,BufNewFile *.F90 set filetype=fortran
+    au! BufRead,BufNewFile *.tex set filetype=tex
+    au! BufRead,BufNewFile *.r,*.R set filetype=r
+    au! BufRead,BufNewFile *.i set filetype=swig
+    au! BufRead,BufNewFile *.swg set filetype=swig
 
     " restart from the line where we were
     au BufReadPost *
