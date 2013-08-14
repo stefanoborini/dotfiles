@@ -13,11 +13,12 @@ function FT_c()
 	set cindent
 	map <F3> :s/^/\/\/ /<CR>:let @/ = ""<CR><CR>
 	map <S-F3> :s/^\/\/ //<CR>:let @/ = ""<CR><CR>
-	map <F4> :s/^/\/\/QQQSBO /<CR>:let @/ = ""<CR><CR>
-	map <S-F4> :s/^\/\/QQQSBO //<CR>:let @/ = ""<CR><CR>
+	map <F4> :s/^/\/\/QQQSBO/<CR>:let @/ = ""<CR><CR>
+	map <S-F4> :s/^\/\/QQQSBO//<CR>:let @/ = ""<CR><CR>
     iabbr sep // -------------------------------------------------------------------------- //
     iabbr complex std::complex< double >
     set colorcolumn=100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 endfunction
 
 function FT_fortran()
@@ -47,11 +48,12 @@ function FT_python()
     set colorcolumn=100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,129,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150
 	map <F3> :s/^/# /<CR>:let @/ = ""<CR><CR>
 	map <S-F3> :s/^# //<CR>:let @/ = ""<CR><CR>
-	map <F4> :s/^/#QQQSBO /<CR>:let @/ = ""<CR><CR>
-	map <S-F4> :s/^#QQQSBO //<CR>:let @/ = ""<CR><CR>
+	map <F4> :s/^/#QQQSBO/<CR>:let @/ = ""<CR><CR>
+	map <S-F4> :s/^#QQQSBO//<CR>:let @/ = ""<CR><CR>
     iabbr false False
     iabbr true True
     augroup END
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 endfunction
 
 function FT_makefile()
@@ -113,6 +115,8 @@ function Main()
     set noerrorbells
     set expandtab
     set vb t_vb=
+    set t_vb=
+    set novisualbell
     set autowrite
     set showmatch
     set incsearch
@@ -132,6 +136,7 @@ function Main()
     set dictionary=$HOME/.cdict
     set complete=.,w,b,u,t,i,k,]
     set tags=~/.mytags
+    set number
 
     " Setup syntax highlighting
     syntax on
@@ -152,7 +157,6 @@ function Main()
         \ endif
 
 
-    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
     call SetupGeneralMappings()
 
     " Assign the filetype to specific routines
