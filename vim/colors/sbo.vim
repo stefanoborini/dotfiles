@@ -1086,7 +1086,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("DiffText", "", "5f5f00", "")
     call <SID>setColor("ColorColumn", "", "00005f", "")
     call <SID>setColor("LineNr", "005f5f", "00005f", "")
-    call <SID>setColor("pySelf", "pink", "", "italic")
+    call <SID>setColor("pySelf", "pink", "", "bold,italic")
 
     hi def link cCustomFunc Function
     hi def link cCustomMethodCall Function
