@@ -168,7 +168,11 @@ function Main()
     au FileType xml call FT_xml()
     au FileType make call FT_makefile()
     au FileType php call FT_php()
-
+    if has("gui_running")
+      " GUI is running or is about to start.
+      " Maximize gvim window.
+      set lines=999 columns=999
+    endif
 endfunction
 
 :call Main()

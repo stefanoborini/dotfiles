@@ -1071,7 +1071,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("StorageClass", "termyellow", "", "")
     call <SID>setColor("Structure", "termyellow", "", "")
     call <SID>setColor("Function", "termblue", "", "none")
-    call <SID>setColor("Statement", "termyellow", "", "bold,italic")
+    call <SID>setColor("Statement", "termyellow", "", "bold")
     call <SID>setColor("PreProc", "termpurple", "", "")
     call <SID>setColor("Special", "ffdead", "", "")
     call <SID>setColor("Ignore", "666666", "", "")
@@ -1086,7 +1086,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
     call <SID>setColor("DiffText", "", "5f5f00", "")
     call <SID>setColor("ColorColumn", "", "00005f", "")
     call <SID>setColor("LineNr", "005f5f", "00005f", "")
-    call <SID>setColor("pySelf", "pink", "", "bold,italic")
+    call <SID>setColor("pySelf", "pink", "", "bold")
 
     hi def link cCustomFunc Function
     hi def link cCustomMethodCall Function
