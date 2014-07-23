@@ -1,3 +1,6 @@
+set logging on
+set logging file "gdb.log"
+set logging overwrite on
 set input-radix 0x10 
 set output-radix 0x10
 set height 0 
