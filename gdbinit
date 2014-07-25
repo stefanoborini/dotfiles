@@ -13,6 +13,10 @@ set follow-exec-mode new
 show follow-exec-mode
 set step-mode on
 show step-mode
+set disassembly-flavor intel
+set print pretty on
+set print asm-demangle on
+set print object on
 #set scheduler-locking step
 #show scheduler-locking
 display/i $pc
