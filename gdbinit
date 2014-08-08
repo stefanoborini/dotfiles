@@ -47,5 +47,10 @@ document eflags
 Print eflags register. 
 end 
 define hook-stop 
-    eflags 
+    eflags
 end
+
+define pydump
+    set $_unused_void = _PyObject_Dump($arg0)
+end
+
