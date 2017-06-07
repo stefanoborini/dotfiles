@@ -11,10 +11,16 @@
     sync = pull --rebase
     mine = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset' --author=Borini
     changes = show --pretty="format:" --name-only
+	heir = log --all --graph --decorate --oneline --simplify-by-decoration
+    ush = push
+    pish = push
+    bracnh = branch
+    psh = push
+    puh = push
 [diff]
-    tool = gvimdiff
+    tool = vimdiff
 [merge]
-    tool = gvimdiff
+    tool = vimdiff
 [difftool]
     prompt = false
 [color]

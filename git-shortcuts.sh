@@ -38,18 +38,6 @@ function last {
     git checkout $PREVIOUS_BRANCH
 }
 
-function fix {
-    if test "x$1" = "x";
-    then
-        echo "Fix name?"
-        return
-    fi
-    echo "Creating master fix $1"
-    git checkout master
-    git pull
-    git checkout -b "fix/$1"
-}
-
 function lfeature {
     if test "x$1" = "x";
     then
@@ -66,12 +54,11 @@ function send {
 }
 
 function push {
-    fab flake8
-    if test $? -ne 0; then
-        echo "You flaked up. Try again"
-        return 1
-    fi
     git push
+}
+
+function b {
+    git branch
 }
 
 function bls {
@@ -87,30 +74,16 @@ function brm {
     git branch -d $target
 }
 
-function bmv {
-    if test "x$1" = "x";
-    then
-        echo "Feature name?"
-        return
-    fi
-    target=`git branch | grep -v '*' | grep $1 | head -n 1`
-    if test $? -ne 0; then
-        echo "Unknown branch"
-        return 1
-    fi
-    git branch -m $target $2
-}
+function branch {
+    git checkout -b $1
+} 
 
 function pr {
     git pull-request
 }
 
-function ci {
+function commit {
     git commit 
-}
-
-function cia {
-    git commit -a
 }
 
 function pull {
@@ -121,7 +94,7 @@ function add {
     git add $@
 }
 
-function spawn {
+function spawnpr {
     if test "x$1" = "x";
     then
         echo "Feature name?"
@@ -131,11 +104,25 @@ function spawn {
     git commit -a 
     git push --set-upstream origin `git branch |grep "* " | cut -d' ' -f2-`
     git pull-request
+    git checkout master
 }
 
-function issue {
-    issue_name=`git issue | grep " 34]" | cut -d'(' -f 1| sed 's/]//' | sed -e 's/^ *//' | sed -e 's/ *$//' | sed -e 's/ /-/g' | tr '[A-Z]' '[a-z]'`
-    git checkout -b "$issue_name"
+function spawnb {
+    if test "x$1" = "x";
+    then
+        echo "Feature name?"
+        return
+    fi
+    git checkout -b feature/$1-`date +%m%d-%H%M`
+    git commit -a 
+    git push --set-upstream origin `git branch |grep "* " | cut -d' ' -f2-`
 }
 
+function clean_merged { 
+    git checkout master
+    for i in `git branch --merged | grep -v "master"`
+    do
+        git branch -d $i
+    done
+}
 
