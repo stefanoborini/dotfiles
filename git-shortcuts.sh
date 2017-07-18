@@ -15,6 +15,10 @@ function master {
     git checkout master
 }
 
+function aster {
+    master
+}
+
 function merge {
     target=`git branch | grep -v '*' | grep $1 | head -n 1`
     if test $? -ne 0; then
