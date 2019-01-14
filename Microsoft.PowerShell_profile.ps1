@@ -5,11 +5,25 @@ set-alias mysql "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe"
 set-alias sha256 "Get-FileHash"
 set-alias which "Get-Command"
 set-alias hexdump "Format-Hex"
+set-alias grep "Select-String"
 
 # Set bash style autocompletion
 Set-PSReadlineKeyHandler -Key Tab -Function Complete
 
 function prompt
+{
+    $gitinfo=(git status -s)
+    if ($LASTEXITCODE -eq 0) {
+        return _prompt_git
+    }
+    $svninfo=(svn info) 
+    if ($LASTEXITCODE -eq 0) {
+        return _prompt_svn
+    }
+    return _prompt_standard
+}
+
+function _prompt_svn
 {
     $svnpath=""
     $svninfo=(svn info)
@@ -47,6 +61,29 @@ function prompt
     return " " 
 }
 
+function _prompt_git
+{
+    $match = (git branch) | Select-String "\*"
+    if ($match) {
+        $branch_name = $match.Line.Split(' ')[1]
+    }
+    Write-Host -nonewline "PS "
+    Write-Host -nonewline $pwd.Path
+    Write-Host -nonewline " " 
+    Write-Host -nonewline -ForegroundColor red $branch_name
+    Write-Host -nonewline ">"
+    return " " 
+}
+
+function _prompt_standard 
+{
+    Write-Host -nonewline "PS "
+    Write-Host -nonewline $pwd.Path
+    Write-Host -nonewline " " 
+    Write-Host -nonewline ">"
+    return " " 
+}
+
 $Env:SVN_EDITOR='"C:\Program Files\Git\usr\bin\vim.exe"'
 
 function home {
@@ -65,3 +102,20 @@ function ls {
         }
     }
 }
+
+function grep {
+    [CmdletBinding()] 
+    param( 
+        [Parameter(ValueFromPipeline)] $lines,
+        $pattern
+    ) 
+
+    process { 
+
+        $_ | Select-String -Pattern $pattern 
+
+    } 
+
+}
+
+. $Home/Documents/WindowsPowerShell/local.ps1
