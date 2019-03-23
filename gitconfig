@@ -5,10 +5,8 @@
     unstash = stash pop
     stat = status
     tree = log --graph --pretty=format:'%C(yellow)%h%Creset %ci %x1b[s%C(green)%an%Creset%x1b[u%x1b[10C%C(cyan)%d%Creset - %s'
-    co = checkout
     vimdiff = difftool
     pick = cherry-pick -x
-    sync = pull --rebase
     mine = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset' --author=Borini
     changes = show --pretty="format:" --name-only
 	heir = log --all --graph --decorate --oneline --simplify-by-decoration
@@ -38,7 +36,7 @@
 	trustExitCode = true
 [user]
 	name = Stefano Borini
-	email = sborini@enthought.com
+	email = stefano.borini@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
