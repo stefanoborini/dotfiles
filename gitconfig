@@ -36,7 +36,7 @@
 	trustExitCode = true
 [user]
 	name = Stefano Borini
-	email = stefano.borini@gmail.com
+	email = stefano.borini@astrazeneca.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
