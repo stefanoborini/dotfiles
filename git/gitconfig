@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/sborini/.gitignore
+	excludesfile = ~/.gitignore
     editor = vim
 [alias]
     unstash = stash pop
@@ -36,8 +36,10 @@
 	trustExitCode = true
 [user]
 	name = Stefano Borini
-	email = stefano.borini@astrazeneca.com
+	email = stefano.borini@gmail.com
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
+[include]
+    path = ~/.gitconfig_include
