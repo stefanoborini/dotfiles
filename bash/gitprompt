@@ -1,4 +1,4 @@
-source ~/Work/dotfiles/git-prompt.sh
+source ~/Work/dotfiles/bash/git-prompt.sh
 
 function __gitStashSize {
   lines=$(git stash list -n 100 2> /dev/null) || return
