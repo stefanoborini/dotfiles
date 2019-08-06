@@ -2,7 +2,8 @@
 /* rs-theme-is-dark: TRUE */
 .ace_gutter {
   background: #000050;
-  color: #005050;
+  color: #007070;
+  
 }
 .ace_print-margin {
   width: 1px;
@@ -13,7 +14,13 @@
   color: #DEDEDE
 }
 .ace_cursor {
-  color: #9F9F9F
+  color: #00FF00;
+}
+.normal-mode .ace_cursor {
+    border: 0 !important;
+    color: black;
+    background-color: #FFFF00;
+    opacity: 1.0;
 }
 .ace_marker-layer .ace_selection {
   background: #424242
