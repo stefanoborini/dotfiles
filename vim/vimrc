@@ -41,6 +41,20 @@ function FT_latex()
     iabbr ref \ref{}<Left><C-R>=Eatchar('\s')<CR>
 endfunction
 
+function FT_R()
+	set autoindent
+    iabbr sep # --------------------------------------------------------------------------
+    augroup vimrc_autocmds
+    set colorcolumn=80,81,82,83,84,85,86,87,88,89,90
+    iabbr false False
+    iabbr true True
+    augroup END
+    autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+    set shiftwidth=2
+    set tabstop=2
+    set softtabstop=2
+endfunction
+
 function FT_python()
 	set autoindent
     iabbr sep # --------------------------------------------------------------------------
@@ -168,6 +182,7 @@ function Main()
     au FileType xml call FT_xml()
     au FileType make call FT_makefile()
     au FileType php call FT_php()
+    au FileType r call FT_R()
     if has("gui_running")
       " GUI is running or is about to start.
       " Maximize gvim window.
